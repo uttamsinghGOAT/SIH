@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Government Scheme Integration</title>
+  <link rel="stylesheet" href="../CSS/GSI.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <h1><i class="fas fa-hospital-user"></i> Government Scheme Integration</h1>
+    <p>
+      A unified platform to access and integrate multiple government health
+      schemes, ensuring streamlined healthcare delivery for citizens and
+      migrant workers.
+    </p>
+
+    <!-- Search + Filter Controls -->
+    <div class="controls">
+      <input type="text" id="searchBar" placeholder="🔍 Search schemes..." />
+      <select id="filterSelect">
+        <option value="all">All Categories</option>
+        <option value="insurance">Insurance</option>
+        <option value="telemedicine">Telemedicine</option>
+        <option value="digital">Digital Health</option>
+        <option value="wellness">Wellness</option>
+        <option value="medicine">Affordable Medicines</option>
+        <option value="immunization">Immunization</option>
+      </select>
+    <button id="downloadPDF">Download PDF</button>
+    </div>
+
+    <!-- Grid wrapper -->
+    <div class="scheme-grid" id="schemeGrid">
+
+        <!-- Enhanced Eligibility Checker Card -->
+        <section class="eligibility-card">
+          <div class="eligibility-header">
+            <i class="fas fa-user-check"></i>
+            <div>
+              <h3>Check My Eligibility</h3>
+              <p class="eligibility-desc">Find out which government health schemes you may qualify for based on your details.</p>
+            </div>
+          </div>
+          <form id="eligibilityForm" autocomplete="off">
+            <div class="eligibility-fields">
+              <div class="eligibility-field">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" min="0" placeholder="Enter your age" required />
+              </div>
+              <div class="eligibility-field">
+                <label for="occupation">Occupation</label>
+                <select id="occupation" name="occupation" required>
+                  <option value="">Select occupation</option>
+                  <option value="worker">Worker</option>
+                  <option value="farmer">Farmer</option>
+                  <option value="student">Student</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="eligibility-field">
+                <label for="income">Annual Income (₹)</label>
+                <input type="number" id="income" name="income" min="0" placeholder="e.g. 150000" required />
+              </div>
+            </div>
+            <button type="submit" class="eligibility-btn"><i class="fas fa-search"></i> Check Eligibility</button>
+          </form>
+          <div id="eligibilityResult" class="eligibility-result"></div>
+        </section>
+
+      <!-- Ayushman Bharat -->
+      <section class="scheme-section" data-category="insurance">
+        <h2><i class="fas fa-heartbeat"></i> Ayushman Bharat</h2>
+        <p>A flagship health insurance scheme aimed at providing coverage to economically vulnerable families.</p>
+        <ul>
+          <li>Health coverage up to ₹5 lakh per family per year</li>
+          <li>Cashless and paperless access to healthcare</li>
+          <li>Wide network of empaneled hospitals and providers</li>
+        </ul>
+      </section>
+
+      <!-- NHA -->
+      <section class="scheme-section" data-category="digital">
+        <h2><i class="fas fa-building"></i> National Health Authority (NHA)</h2>
+        <p>The apex body responsible for implementing India’s public health insurance and digital health ecosystem.</p>
+        <ul>
+          <li>Implementation of Ayushman Bharat PM-JAY</li>
+          <li>Health technology assessment and fair pricing</li>
+          <li>Development of the National Digital Health Ecosystem</li>
+        </ul>
+      </section>
+
+      <!-- e-Sanjeevani -->
+      <section class="scheme-section" data-category="telemedicine">
+        <h2><i class="fas fa-video"></i> e-Sanjeevani</h2>
+        <p>A telemedicine service enabling remote doctor consultations, strengthening healthcare access in rural India.</p>
+        <ul>
+          <li>Remote video consultation with qualified doctors</li>
+          <li>Digital prescription and medical advice</li>
+          <li>Accessible via web and mobile applications</li>
+        </ul>
+      </section>
+
+      <!-- National Telemedicine -->
+      <section class="scheme-section" data-category="telemedicine">
+        <h2><i class="fas fa-stethoscope"></i> National Telemedicine Service</h2>
+        <p>A government initiative to expand healthcare reach via telemedicine platforms.</p>
+        <ul>
+          <li>Virtual OPD facilities across states</li>
+          <li>Reduced patient travel & cost burden</li>
+          <li>Integration with district-level healthcare centres</li>
+        </ul>
+      </section>
+
+      <!-- NDHM -->
+      <section class="scheme-section" data-category="digital">
+        <h2><i class="fas fa-id-card-alt"></i> National Digital Health Mission (NDHM)</h2>
+        <p>A mission to create an integrated digital health infrastructure for every citizen.</p>
+        <ul>
+          <li>Unique Health ID (ABHA) for citizens</li>
+          <li>Unified digital health records</li>
+          <li>Secure sharing of medical history with doctors</li>
+        </ul>
+      </section>
+
+      <!-- Wellness Centres -->
+      <section class="scheme-section" data-category="wellness">
+        <h2><i class="fas fa-clinic-medical"></i> Ayushman Bharat Health & Wellness Centres</h2>
+        <p>Centres offering preventive, promotive, rehabilitative and curative care at the community level.</p>
+        <ul>
+          <li>Free essential drugs & diagnostic services</li>
+          <li>Focus on maternal & child health</li>
+          <li>Promotion of yoga, nutrition and lifestyle awareness</li>
+        </ul>
+      </section>
+
+      <!-- Health Education -->
+      <section class="scheme-section" data-category="wellness">
+        <h2><i class="fas fa-book-medical"></i> Health Education and Communication</h2>
+        <p>Government programs to raise awareness and empower citizens with correct health knowledge.</p>
+        <ul>
+          <li>Mass awareness campaigns on hygiene & vaccination</li>
+          <li>Multilingual health education materials</li>
+          <li>Community workshops on lifestyle diseases</li>
+        </ul>
+      </section>
+
+      <!-- Jan Aushadhi -->
+      <section class="scheme-section" data-category="medicine">
+        <h2><i class="fas fa-pills"></i> Pradhan Mantri Bhartiya Janaushadhi Pariyojana</h2>
+        <p>A scheme to provide quality medicines at affordable prices through special Janaushadhi stores.</p>
+        <ul>
+          <li>Generic medicines at 50–90% lower prices</li>
+          <li>5000+ operational Janaushadhi Kendras</li>
+          <li>Affordable healthcare for all citizens</li>
+        </ul>
+      </section>
+
+      <!-- Mission Indradhanush -->
+      <section class="scheme-section" data-category="immunization">
+        <h2><i class="fas fa-syringe"></i> Mission Indradhanush</h2>
+        <p>A universal immunization program to cover all children and pregnant women.</p>
+        <ul>
+          <li>Free vaccination for 12 vaccine-preventable diseases</li>
+          <li>Special focus on remote & underserved areas</li>
+          <li>Improved maternal & child health outcomes</li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="GSI.js"></script>
+</body>
+</html>

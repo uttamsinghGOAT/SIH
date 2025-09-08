@@ -1,0 +1,117 @@
+/* Global */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f8fb;
+  color: #222;
+}
+
+/* Header */
+.page-header {
+  background: linear-gradient(90deg, #1f4f8a, #00c6ff);
+  color: #fff;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 4px 15px rgba(0, 114, 255, 0.3);
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.page-header p {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Main Content */
+.content {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+section {
+  margin-bottom: 2.5rem;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+  color: #0072ff;
+  margin-top: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin: 0.6rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+ul li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #00c6ff;
+  font-weight: bold;
+}
+
+/* Flowchart Style */
+.flowchart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.flowchart-box {
+  background: #fff;
+  border: 2px solid #0072ff;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  min-width: 180px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.flowchart-box::after {
+  content: "→";
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: #0072ff;
+}
+
+.flowchart-box:last-child::after {
+  display: none;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #eef3f9;
+  margin-top: 2rem;
+  border-top: 2px solid #0072ff20;
+}
+
+footer a {
+  text-decoration: none;
+  color: #0072ff;
+  font-weight: bold;
+}

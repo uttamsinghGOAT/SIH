@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Portal</title>
+  <link rel="stylesheet" href="../CSS/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+  <h1>Admin Portal</h1>
+  <p>Welcome, Admin | System Management</p>
+</header>
+
+<section>
+  <h2>Statistics</h2>
+  <div class="summary-cards">
+    <div>
+      <h3>Total Workers</h3>
+      <p>1,245</p>
+    </div>
+    <div>
+      <h3>Total Doctors</h3>
+      <p>125</p>
+    </div>
+    <div>
+      <h3>Total Hospitals</h3>
+      <p>48</p>
+    </div>
+    <div>
+      <h3>Total Appointments</h3>
+      <p>3,452</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Manage Users</h2>
+  <table>
+    <tr>
+      <th>User Type</th>
+      <th>Name</th>
+      <th>State</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>Worker</td>
+      <td>Ravi Kumar</td>
+      <td>Kerala</td>
+      <td>ravi@example.com</td>
+      <td><button onclick="editUser()">Edit</button></td>
+    </tr>
+    <tr>
+      <td>Doctor</td>
+      <td>Dr. Mehta</td>
+      <td>Tamil Nadu</td>
+      <td>mehta@example.com</td>
+      <td><button onclick="editUser()">Edit</button></td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h2>System Actions</h2>
+  <button onclick="addUser()"><i class="fas fa-user-plus"></i> Add User</button>
+  <button onclick="generateReports()"><i class="fas fa-file-alt"></i> Generate Reports</button>
+</section>
+
+<nav>
+  <ul>
+    <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+    <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+  </ul>
+</nav>
+
+<script>
+function editUser(){ alert('Edit user form opens'); }
+function addUser(){ alert('Add new user form opens'); }
+function generateReports(){ alert('Generating system reports...'); }
+</script>
+</body>
+</html>

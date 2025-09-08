@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor Portal</title>
+  <link rel="stylesheet" href="../CSS/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+  <h1>Doctor Portal</h1>
+  <p>Welcome, Dr. [Doctor Name] | State: [Selected State]</p>
+</header>
+
+<section>
+  <h2>Assigned Patients</h2>
+  <table>
+    <tr>
+      <th>Worker Name</th>
+      <th>Health ID</th>
+      <th>Last Visit</th>
+      <th>Next Appointment</th>
+      <th>Hospital</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>Ravi Kumar</td>
+      <td>MH123456</td>
+      <td>12-Aug-2025</td>
+      <td>25-Aug-2025</td>
+      <td>Kerala Health Center</td>
+      <td><button onclick="viewRecord()">View Record</button></td>
+    </tr>
+    <tr>
+      <td>Priya Singh</td>
+      <td>MH987654</td>
+      <td>15-Aug-2025</td>
+      <td>28-Aug-2025</td>
+      <td>Coimbatore Hospital</td>
+      <td><button onclick="viewRecord()">View Record</button></td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h2>Actions</h2>
+  <button onclick="addMedicalRecord()"><i class="fas fa-plus-circle"></i> Add Medical Record</button>
+  <button onclick="updateAppointment()"><i class="fas fa-calendar-plus"></i> Update Appointment</button>
+</section>
+
+<nav>
+  <ul>
+    <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+    <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+  </ul>
+</nav>
+
+<script>
+function viewRecord(){ alert('Opening patient record...'); }
+function addMedicalRecord(){ alert('Add new medical record form opens'); }
+function updateAppointment(){ alert('Update appointment form opens'); }
+</script>
+</body>
+</html>

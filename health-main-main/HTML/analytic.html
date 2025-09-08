@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DHP Analytics Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {--primary-600:#0b7285; --primary-900:#07475c;}
+    body {margin:0;font-family:Arial;background:linear-gradient(135deg,#e6f7f9,#fdfdfd);color:#333;}
+    header {background:linear-gradient(135deg,var(--primary-600),var(--primary-900));color:white;padding:1.5rem;text-align:center;}
+    header h1{margin:0;font-size:2rem;}
+    .dashboard {padding:2rem;}
+    .filter {
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .filter label {
+      margin: 0 0.3rem 0 0;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    .filter select {
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      margin-right: 0;
+      min-width: 110px;
+    }
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-bottom:2rem;}
+    .card{background:white;padding:1.5rem;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.1);text-align:center;transition:transform 0.3s ease,box-shadow 0.3s ease;}
+    .card:hover{transform:translateY(-6px);box-shadow:0 6px 16px rgba(0,0,0,0.15);}
+    .card i{font-size:2rem;margin-bottom:0.5rem;color:var(--primary-600);}
+    .card h2{margin:0.5rem 0;font-size:1.5rem;color:var(--primary-900);}
+    .card p{margin:0;font-size:0.9rem;color:#666;}
+    .charts{display:grid;grid-template-columns:1fr;gap:2rem;}
+    .chart-container{background:white;padding:1.5rem;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+    .chart-container h3{margin:0 0 1rem;color:var(--primary-900);}
+    .dashboard-grid-analytic {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  min-height: 500px;
+}
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem 0.7rem;
+    justify-items: left;
+    align-items: center;
+    margin-bottom: 0;
+    min-width: 340px;
+    max-width: 540px;
+    margin-left: 0.5rem; /* Reduced to shift left */
+    margin-right: 0;
+  }
+  .card {
+    background: white;
+    padding: 2.2rem 2rem;
+    margin-right: 0;
+    min-width: 180px;
+    min-height: 120px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+.charts {
+  display: block;
+}
+.chart-container {
+  background: white;
+  padding: 2rem 2rem 2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.chart-container h3 {
+  margin: 0 0 1rem;
+  color: var(--primary-900);
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DHP Analytics Dashboard</h1>
+    <p>State-wise healthcare progress and monthly insights</p>
+  </header>
+
+  <div class="dashboard">
+    <div class="filter">
+      <label for="state">State:</label>
+      <select id="state">
+        <option value="all">All States</option>
+        <option value="assam">Assam</option>
+        <option value="kerala">Kerala</option>
+        <option value="delhi">Delhi</option>
+        <option value="maharashtra">Maharashtra</option>
+      </select>
+      <label for="period">Period:</label>
+      <select id="period">
+        <option value="month">Month</option>
+        <option value="day">Day</option>
+      </select>
+      <label for="year">Year:</label>
+      <select id="year">
+        <option value="2025">2025</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+      </select>
+    </div>
+
+     <div class="dashboard-grid-analytic">
+  <div class="stats">
+    <div class="card"><i class="fa-solid fa-users"></i><h2 id="logins">1200</h2><p>People Logged In</p></div>
+    <div class="card"><i class="fa-solid fa-user-check"></i><h2 id="treated">850</h2><p>Patients Treated</p></div>
+    <div class="card"><i class="fa-solid fa-user-xmark"></i><h2 id="untreated">350</h2><p>Patients Untreated</p></div>
+    <div class="card"><i class="fa-solid fa-hospital"></i><h2 id="total">1500</h2><p>Total Patients</p></div>
+  </div>
+  <div class="charts">
+    <div class="chart-container" style="max-width: 950px; min-width: 500px; margin-left: 0; margin-right: auto;">
+      <h3 id="chartTitle">Month-wise Patient Trends</h3>
+      <canvas id="patientChart" style="max-height: 480px;"></canvas>
+    </div>
+  </div>
+    
+
+  <script>
+    // Demo data for different periods
+    const data = {
+      all: {
+        month:  { logins:120, treated:85, untreated:35, total:150, chart:[100,200,300,400,500,600,700,800,900,1000,1100,1200], labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'] },
+        day:    { logins:12, treated:8, untreated:4, total:15, chart:Array.from({length:30},(_,i)=>i+1), labels:Array.from({length:30},(_,i)=>`Day ${i+1}`) }
+      },
+      assam: {
+        month:  { logins:40, treated:25, untreated:15, total:50, chart:[40,60,80,100,70,80,90,100,110,120,130,140], labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'] },
+        day:    { logins:4, treated:2, untreated:2, total:5, chart:Array.from({length:30},(_,i)=>i+1), labels:Array.from({length:30},(_,i)=>`Day ${i+1}`) }
+      },
+      kerala: {
+        month:  { logins:30, treated:20, untreated:10, total:40, chart:[30,50,80,90,70,80,60,70,80,90,100,110], labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'] },
+        day:    { logins:3, treated:2, untreated:1, total:4, chart:Array.from({length:30},(_,i)=>i+1), labels:Array.from({length:30},(_,i)=>`Day ${i+1}`) }
+      },
+      delhi: {
+        month:  { logins:20, treated:15, untreated:5, total:20, chart:[20,40,50,60,20,10,15,25,35,45,30,20], labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'] },
+        day:    { logins:2, treated:1, untreated:1, total:2, chart:Array.from({length:30},(_,i)=>i+1), labels:Array.from({length:30},(_,i)=>`Day ${i+1}`) }
+      },
+      maharashtra: {
+        month:  { logins:30, treated:25, untreated:5, total:35, chart:[40,60,70,80,60,40,50,60,70,80,60,40], labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'] },
+        day:    { logins:3, treated:2, untreated:1, total:4, chart:Array.from({length:30},(_,i)=>i+1), labels:Array.from({length:30},(_,i)=>`Day ${i+1}`) }
+      }
+    };
+
+    // Chart.js setup
+    const ctx = document.getElementById('patientChart').getContext('2d');
+    let gradient = ctx.createLinearGradient(0,0,0,220);
+    gradient.addColorStop(0,'#0b7285');
+    gradient.addColorStop(1,'#07475c');
+
+    function getCurrentData() {
+      const state = document.getElementById('state').value;
+      const period = document.getElementById('period').value;
+      return data[state][period];
+    }
+
+    let chart = new Chart(ctx,{
+      type:'bar',
+      data:{
+        labels: data.all.month.labels,
+        datasets:[{
+          label:'Patients Joined',
+          data: data.all.month.chart,
+          backgroundColor: gradient,
+          borderRadius: 10,
+          barPercentage: 0.6,
+          categoryPercentage: 0.7,
+          maxBarThickness: 48
+        }]
+      },
+      options:{
+        responsive:true,
+        maintainAspectRatio: false,
+        plugins:{
+          legend:{display:false},
+          tooltip:{backgroundColor:'#006d77',titleColor:'#ffd166',bodyColor:'#fff'}
+        },
+        layout:{padding:{top:10,bottom:10}},
+        scales:{
+          x:{grid:{display:false},ticks:{color:'#003366',font:{weight:'bold'}}},
+          y:{beginAtZero:true,grid:{color:'#edf6f9'},ticks:{color:'#003366'}}
+        }
+      }
+    });
+
+    function updateDashboard() {
+      const state = document.getElementById('state').value;
+      const period = document.getElementById('period').value;
+      const d = data[state][period];
+      document.getElementById('logins').textContent=d.logins;
+      document.getElementById('treated').textContent=d.treated;
+      document.getElementById('untreated').textContent=d.untreated;
+      document.getElementById('total').textContent=d.total;
+      chart.data.labels = d.labels;
+      chart.data.datasets[0].data = d.chart;
+      // Update chart title
+      let title = '';
+      if(period==='month') title = 'Month-wise Patient Trends';
+      else title = 'Day-wise Patient Trends';
+      document.getElementById('chartTitle').textContent = title;
+      chart.update();
+    }
+
+  document.getElementById('state').addEventListener('change', updateDashboard);
+  document.getElementById('period').addEventListener('change', updateDashboard);
+  document.getElementById('year').addEventListener('change', updateDashboard);
+  </script>
+</body>
+</html>

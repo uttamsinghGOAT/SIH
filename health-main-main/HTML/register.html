@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Health ID</title>
+  <link rel="stylesheet" href="../CSS/register.css">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h2>Register Health ID</h2>
+    <div class="progressbar">
+      <div class="progress" id="progress"></div>
+      <div class="progress-step progress-step-active" data-title="Personal"></div>
+      <div class="progress-step" data-title="Work"></div>
+      <div class="progress-step" data-title="Medical"></div>
+    </div>
+
+   <form id="regForm" action="success.html" method="GET">
+      <!-- STEP 1: PERSONAL INFO -->
+      <div class="form-step form-step-active">
+        <label for="regType">Register With:</label>
+        <select id="regType" name="regType" required>
+          <option value="">-- Select --</option>
+          <option value="aadhaar">Aadhaar</option>
+          <option value="passport">Passport</option>
+        </select>
+
+        <label for="idNumber">Aadhaar/Passport Number:</label>
+        <input type="text" id="idNumber" name="idNumber" required>
+
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="">-- Select --</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+
+        <div class="btns">
+          <a href="#" class="btn btn-next">Next</a>
+        </div>
+      </div>
+
+      <!-- STEP 2: WORK INFO -->
+      <div class="form-step">
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" placeholder="10-digit number" required>
+
+        <label for="state">State of Origin:</label>
+        <input type="text" id="state" name="state" required>
+
+        <label for="location">Current Work Location:</label>
+        <input type="text" id="location" name="location" required>
+
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" name="occupation">
+
+        <div class="btns">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#" class="btn btn-next">Next</a>
+        </div>
+      </div>
+
+      <!-- STEP 3: MEDICAL INFO -->
+      <div class="form-step">
+        <label for="blood">Blood Group:</label>
+        <select id="blood" name="blood">
+          <option value="">-- Select --</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+        </select>
+
+        <label for="allergies">Allergies (if any):</label>
+        <input type="text" id="allergies" name="allergies">
+
+        <label for="conditions">Existing Conditions:</label>
+        <input type="text" id="conditions" name="conditions" placeholder="e.g. Diabetes, Asthma">
+
+        <label>
+          <input type="checkbox" required> I agree to the Terms & Privacy Policy
+        </label>
+
+        <div class="btns">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <button type="submit" class="btn">Generate Health ID</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script src="register.js"></script>
+</body>
+</html>

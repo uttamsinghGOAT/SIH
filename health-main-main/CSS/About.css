@@ -1,0 +1,155 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9fbfd;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #003366;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #006d77;
+  color: white;
+  position: fixed;
+  width: 96%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 0 1rem;
+}
+
+.nav-links a {
+  color: white;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #ffd166;
+}
+
+/* About Hero Section */
+.about-hero {
+            background: linear-gradient(135deg, #83c5be 0%, #edf6f9 100%);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            color: #003366;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #006d77, #83c5be);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Main About Content */
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            line-height: 1.8;
+        }
+
+        .about-description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            text-align: justify;
+        }
+
+        
+
+        .highlight {
+            background: linear-gradient(120deg, #ffd166 0%, transparent 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+/* Features Grid */
+        .container {
+      max-width: 800px;
+      background: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature {
+      margin-bottom: 20px;
+    }
+
+    .feature h3 {
+      font-size: 1.2rem;
+      color: #333;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feature .emoji {
+      font-size: 1.4rem;
+    }
+
+    .feature p {
+      margin: 5px 0 0;
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.5;
+    }
+/* Vision Statement */
+        .vision-statement {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+            border-left: 5px solid #83c5be;
+        }
+
+        .vision-statement p {
+            font-style: italic;
+            color: #003366;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .emoji {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Footer */
+footer {
+  background: #006d77;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+    

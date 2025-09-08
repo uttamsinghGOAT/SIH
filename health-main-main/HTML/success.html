@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Successful</title>
+  <link rel="stylesheet" href="../CSS/register.css">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+</head>
+<body>
+
+  <div class="container success-box">
+    <div class="success-content">
+      <div class="success-info">
+        <h2>🎉 Registration Successful</h2>
+        <p>Your Health ID has been generated.</p>
+        <h3 id="healthId">Health ID: HW2025-001</h3>
+        <a href="dashboard.html" class="btn dashboard-btn">Go to Dashboard</a>
+      </div>
+      <div class="success-qr">
+        <div id="qrcode"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Generate random Health ID
+    const healthId = "HW2025-" + Math.floor(Math.random() * 9000 + 1000);
+    document.getElementById("healthId").textContent = "Health ID: " + healthId;
+
+    // Generate QR Code
+    new QRCode(document.getElementById("qrcode"), {
+      text: healthId,
+      width: 128,
+      height: 128,
+      colorDark : "#00416A",
+      colorLight : "#ffffff",
+    });
+  </script>
+</body>
+</html>

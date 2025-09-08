@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Worker Full Records</title>
+  <link rel="stylesheet" href="../CSS/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+  <h1>Worker Full Health Records</h1>
+  <p>Health ID: <strong>[REGISTER_HEALTH_ID]</strong> | State: [Selected State]</p>
+</header>
+
+<section>
+  <h2>All Medical Records</h2>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Doctor</th>
+      <th>Hospital</th>
+      <th>Diagnosis</th>
+      <th>Prescription</th>
+      <th>Vaccination</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td>12-Aug-2025</td>
+      <td>Dr. Mehta</td>
+      <td>Kerala Health Center</td>
+      <td>Fever</td>
+      <td>Paracetamol 500mg</td>
+      <td>-</td>
+      <td>Follow up in 3 days</td>
+    </tr>
+    <tr>
+      <td>20-Jul-2025</td>
+      <td>Dr. Kumar</td>
+      <td>Coimbatore Hospital</td>
+      <td>-</td>
+      <td>-</td>
+      <td>Covishield Dose 2</td>
+      <td>-</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h2>Downloads</h2>
+  <button onclick="downloadMedicalHistory()"><i class="fas fa-notes-medical"></i> Download Full History</button>
+  <button onclick="downloadVaccinationRecord()"><i class="fas fa-syringe"></i> Download Vaccination Record</button>
+</section>
+
+<nav>
+  <ul>
+    <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+    <li><a href="appointments.html"><i class="fas fa-calendar-check"></i> Appointments</a></li>
+    <li><a href="update.html"><i class="fas fa-pen"></i> Update Info</a></li>
+    <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+  </ul>
+</nav>
+
+<script>
+function downloadMedicalHistory(){ alert('Downloading Full Medical History PDF...'); }
+function downloadVaccinationRecord(){ alert('Downloading Vaccination Record PDF...'); }
+</script>
+</body>
+</html>

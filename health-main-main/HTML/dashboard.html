@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Worker Dashboard</title>
+  <link rel="stylesheet" href="../CSS/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Welcome, [Worker Name]</h1>
+    <p>State: [Selected State] | Health ID: <strong>[REGISTER_HEALTH_ID]</strong></p>
+  </header>
+
+  <!-- Summary Cards -->
+  <section>
+    
+    <div class="summary-cards">
+      <div>
+        <h3>Last Visit</h3>
+        <p>[LAST_VISIT_DATE]</p>
+      </div>
+      <div>
+        <h3>Next Appointment</h3>
+        <p>[NEXT_APPOINTMENT_DATE]</p>
+      </div>
+      <div>
+        <h3>Total Vaccinations</h3>
+        <p>[TOTAL_VACCINATIONS]</p>
+      </div>
+      <div>
+        <h3>Total Hospital Visits</h3>
+        <p>[TOTAL_VISITS]</p>
+      </div>
+      <div>
+        <h3>Assigned Doctor</h3>
+        <p>[DOCTOR_NAME]</p>
+      </div>
+      <div>
+        <h3>Primary Hospital</h3>
+        <p>[HOSPITAL_NAME]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Downloads Section -->
+  <section>
+    <button onclick="downloadHealthID()"><i class="fas fa-id-card"></i> Health ID</button>
+    <button onclick="downloadRegisterDetails()"><i class="fas fa-file-alt"></i> Registration Details</button>
+    <button onclick="downloadMedicalHistory()"><i class="fas fa-notes-medical"></i> Medical History</button>
+  </section>
+
+  <!-- Recent Medical Records Table -->
+  <section>
+    <h2>Recent Medical Records</h2>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Doctor</th>
+        <th>Hospital</th>
+        <th>Diagnosis</th>
+        <th>Prescription</th>
+        <th>Vaccination</th>
+      </tr>
+      <tr>
+        <td>12-Aug-2025</td>
+        <td>Dr. Mehta</td>
+        <td>Kerala Health Center</td>
+        <td>Fever</td>
+        <td>Paracetamol 500mg</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>20-Jul-2025</td>
+        <td>Dr. Kumar</td>
+        <td>Coimbatore Hospital</td>
+        <td>-</td>
+        <td>-</td>
+        <td>Covishield Dose 2</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="worker-records.html"><i class="fas fa-notes-medical"></i> Full Records</a></li>
+      <li><a href="update.html"><i class="fas fa-pen"></i> Update Info</a></li>
+      <li><a href="appointments.html"><i class="fas fa-calendar-check"></i> Appointments</a></li>
+      <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- JS -->
+  <script>
+    function downloadHealthID(){ alert('Downloading Health ID PDF...'); }
+    function downloadRegisterDetails(){ alert('Downloading Registration Details PDF...'); }
+    function downloadMedicalHistory(){ alert('Downloading Medical History PDF...'); }
+  </script>
+</body>
+</html>
